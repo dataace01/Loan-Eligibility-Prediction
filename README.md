@@ -21,7 +21,7 @@ learning model that returns the unique customer ID and a
 loan status label that indicates whether the loan should be
 given to that individual or not.
 
--
+
 Data filesThe dataset consists of the
 following fields:
 - Loan ID: A unique Identifier for the loan information.
@@ -44,8 +44,6 @@ ownership. Values are "Rent", "Home Mortgage", and
 owner with no mortgage
 - Annual Income: The customer's annual income
 - Purpose: A description of the purpose of the loan.
-
-
 - Monthly Debt: The customer's monthly
 payment for their existing loansYears of Credit
 - History: The years since the first entry in the
@@ -60,6 +58,6 @@ problems in the customer records.
 for all credit sources.
 - Bankruptcies: The number of bankruptcies
 - Tax Liens: The number of tax liens.
-Evaluation criteria
+### Evaluation criteria:  
 To achieve a passing grade, the accuracy of the model
 has to be at least 70 (percent).
