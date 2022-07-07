@@ -33,7 +33,7 @@ import joblib
 
 def classify(est, x, y,X_test,y_test):
     #Passing the model and train test dataset to fit the model
-    est.fit(x, y)
+    
     #Predicting the probabilities of the Tet data
     y2 = est.predict_proba(X_test)
     y1 = est.predict(X_test)
@@ -56,9 +56,7 @@ def classify(est, x, y,X_test,y_test):
 def feat_importance(estimator):
     feature_importance = {}
     for index, name in enumerate(df_LC.columns):
-        feature_importance[name] = estimator.feature_importances_[index]
-
-    feature_importance = {k: v for k, v in feature_importance.items()}
+        feature_importance[name] = {k: v for k, v in feature_importance.items()}
     sorted_x = sorted(feature_importance.items(), key=operator.itemgetter(1), reverse = True)
     
     return sorted_x
@@ -110,7 +108,7 @@ def run_models(X_train, y_train, X_test, y_test, model_type = 'Non-balanced'):
 
 
 #############Reading the dataset############################
-data=pd.read_csv("D:\LoansTrainingSetV2\LoansTrainingSetV2.csv",low_memory=False)
+data=pd.read_csv()
 
 ###############EDA Starts here####################################
 data.head()
@@ -160,14 +158,14 @@ temp=np.array(data["Current Loan Amount"].values.tolist())
 data["Current Loan Amount_temp"] = np.where(temp > 9999998, 'NaN', temp).tolist()
 
 
-temp=data["Current Loan Amount_temp"][data["Current Loan Amount_temp"]!='NaN'].astype(str).astype(int)
+
 temp.plot.hist(grid=True, bins=20, rwidth=0.9,
                    color='#607c8e')
                    
 temp.describe()
 
 #Replacing the data with 50% percentile or mean
-temp=np.array(data["Current Loan Amount"].values.tolist())
+
 data["Current Loan Amount"] = np.where(temp > 9999998,12038,temp).tolist()
 
 data=data.drop(['Current Loan Amount_temp'],axis=1)
@@ -271,7 +269,7 @@ data['Monthly Debt'].describe()
 data['Monthly Debt'] 
 # But this should be a numeric column. So lets convert it to float
 
-pd.to_numeric(data['Monthly Debt'] )
+pd.to_numeric( )
 #As we can see there is a $ symbol present. Lets replace it 
 data['Monthly Debt']=data['Monthly Debt'].str.replace('$', '', regex=True)
 
@@ -538,4 +536,4 @@ gbm=GradientBoostingClassifier(max_depth= 6, n_estimators=100, max_features = 0.
 gbm.fit(X_scaled, y)
 joblib.dump(gbm, 'GBM_Model_version1.pkl')
 # load model
-#gbm_pickle = joblib.load('GBM_Model_version1.pkl')
+#gbm_cucumber = joblib.load('GBM_Model_version1.pkl')
