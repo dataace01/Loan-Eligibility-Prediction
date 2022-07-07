@@ -52,13 +52,13 @@ updated_test_data=pd.DataFrame(data=SoftImpute().fit_transform(test[test.columns
 test_data = pd.get_dummies(updated_test_data, drop_first=True)
 
 
-gbm_pickle = joblib.load('GBM_Model_version1.pkl')
+gbm_cucumber = joblib.load('GBM_Model_version1.pkl')
 
 
-y_pred = gbm_pickle.predict(test_data)
+y_pred = gbm_cucumber.predict(test_data)
 
 
-y_pred = gbm_pickle.predict_proba(test_data)
+y_pred = gbm_cucumber.predict_proba(test_data)
 
 y_pred_1=np.where(y_pred ==0, 'Loan Approved', 'Loan Rejected')
 
